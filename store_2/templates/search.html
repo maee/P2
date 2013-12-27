@@ -1,7 +1,11 @@
 <div id = "search">
     <div id = "select">
         <select id = "frst_select" class = "fatext btn-primary dropdown-inverse">
-
+            {% for cat in category %}
+                <option id = {{ cat.name }}>
+                    {{ cat.name }}
+                </option>
+            {% endfor %}
         </select>
     </div>
 

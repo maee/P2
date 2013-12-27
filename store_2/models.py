@@ -23,17 +23,14 @@ class Product(models.Model):
     p = models.IntegerField(max_length=10)
     desc = models.TextField(max_length=500)
     subcategory = models.ForeignKey(SubCategory)
-    relatedProduct = None
+    #picture = models.FileField(upload_to='.')
 
     def __str__(self):
         return self.name
 
-    def set_relatedProducts(self):
-        self.relatedProduct = models.ManyToManyField(Product)
-
 
 class SlideShows(models.Model):
-    p1 = models.ManyToManyField(Product)
+    slide_products = models.ManyToManyField(Product)
 
 
 class Popularity(models.Model):
@@ -42,7 +39,6 @@ class Popularity(models.Model):
 
 class Superior(models.Model):
     products = models.ManyToManyField(Product)
-
 
 
 class Pr(models.Model):

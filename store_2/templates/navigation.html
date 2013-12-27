@@ -1,0 +1,14 @@
+<nav id = "nav">
+    {% for cat in category %}
+        <div class = "dropdown">
+            <div class = "fatext btn btn-primary switch" id = {{ cat.n }}>
+                {{ cat.name }}
+                {% for sub in subcategory %}
+                    {% if sub.parent.n == cat.n %}
+                        <span class="caret"></span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</nav>

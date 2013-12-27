@@ -87,7 +87,7 @@ ul{
 #search{
 	display: tabel-cell;
 	width: 66%;
-	height: 10%;
+	height: 20%;
 	background-color: #CCFF33;
 	border-radius: 20px;
 	margin: 20px;
@@ -202,7 +202,7 @@ article{
 .content{
 	display: block;
 	width: 30.5%;
-	height: 50%;
+	height: 55%;
 	float: left;
 	background-color: #C0C0C0;
 	margin-left: 20px;
@@ -249,6 +249,10 @@ article{
 	float: right;
 }
 
+.buyButton{
+    margin-bottom: 20px;
+}
+
 .content:hover{
 	opacity: 1;
 }
@@ -256,7 +260,14 @@ article{
 .m_img{
 	display: block;
 	width: 70%;
-	height: 50%;
+	height: 25%;
+	margin: auto;
+}
+
+.m_img2{
+    display: block;
+	width: 70%;
+	height: 60%;
 	margin: auto;
 }
 
