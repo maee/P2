@@ -1,8 +1,8 @@
-<div id = "search">
+<div id = "search" >
     <div id = "select">
         <select id = "frst_select" class = "fatext btn-primary dropdown-inverse">
             {% for cat in category %}
-                <option id = {{ cat.name }}>
+                <option id = {{ cat.n }}>
                     {{ cat.name }}
                 </option>
             {% endfor %}
@@ -11,7 +11,11 @@
 
     <div id = "select">
         <select id = "snd_select" class = "fatext btn-primary dropdown-inverse">
-
+            {% for sub in subcategory %}
+                {% if sub.parent.n == first_cat.n %}
+                    <option>{{ sub.name }}</option>
+                {% endif %}
+            {% endfor %}
         </select>
     </div>
 
@@ -20,6 +24,6 @@
     </div>
 
     <div id = "search_btn">
-        <button id = "searchBtn" class="fatext btn btn-primary btn-wide">جستجو</button>
+        <button id = "searchBtn" class="fatext btn btn-primary">جستجو</button>
     </div>
 </div>

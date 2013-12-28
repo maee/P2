@@ -3,12 +3,17 @@
         <div class = "dropdown">
             <div class = "fatext btn btn-primary switch" id = {{ cat.n }}>
                 {{ cat.name }}
-                {% for sub in subcategory %}
-                    {% if sub.parent.n == cat.n %}
-                        <span class="caret"></span>
-                    {% endif %}
-                {% endfor %}
+                <ul class="switch-menu" style="top: 28px; left: 10px">
+                    {% for sub in subcategory %}
+                        {% if sub.parent.n == cat.n %}
+                            <li class="switch-menu_li" id = {{ sub.name }}>
+                                <a class = "a">{{ sub.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     {% endfor %}
+
 </nav>

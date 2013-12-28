@@ -87,7 +87,7 @@ ul{
 #search{
 	display: tabel-cell;
 	width: 66%;
-	height: 20%;
+	height: 9%;
 	background-color: #CCFF33;
 	border-radius: 20px;
 	margin: 20px;
@@ -114,6 +114,7 @@ select{
 article{
 	display: block;
 	margin-left: 350px;
+    height: 100%;
 	afloat: left;
 }
 
