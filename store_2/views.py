@@ -1,6 +1,7 @@
 from django.template import loader, Context
 from django.http import HttpResponse
 import json
+from urllib.parse import urlparse
 from store_2.models import Category, SubCategory, Pr, SlideShows, Popularity, Superior
 
 
@@ -40,6 +41,9 @@ def main(request):
 
 
 def p_list(request):
+    #print(request.POST)
+    print(request.GET.dict()['category'])
+
     json_data = json.dumps({'result': 1, 'page': 1, 'pageSize': 10, 'totalResults': 233, 'productList': [
         {'category': 11, 'price': 14000, 'id': 1, 'name': 'maee'}
     ]})

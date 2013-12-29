@@ -25,6 +25,7 @@ function product_list(){
     //========================== add headr div =======================================>
     var mother3_div = document.createElement("div");
     mother3_div.setAttribute("id", "inContentArticle");
+    mother3_div.style.color = 'yellow';
     article.appendChild(mother3_div);
 
     var div = document.createElement("div");
@@ -43,26 +44,26 @@ function product_list(){
         ifsearch = this.firstElementChild.innerHTML;
 
     }
-    alert(ifsearch)
+
     var ajaxData2 = {
-        "category": this.id,
+        "category": this.firstElementChild.innerHTML,
         //"search": ifsearch,
         "pageSize": 12
     }
     $.ajax({
-        url: "https://localhost:8000/store/product/list/",
-        type: 'post',
+        url: "/store/product/list/",
+        type: 'get',
         dataType: 'json',
         data: ajaxData2,
-        success: function(data2, status, xhr){
-            if (data2.result == 0){
+        success: function(data, status, xhr){
+            if (data.result == 0){
                 alert("error");
             }
             // ============ list gotten successfully ==================================>
             else{
                 alert("success")
                 //========= now process and show the list =============================>
-                if(data2.productList.length == 0){
+                if(data.productList.length == 0){
                     var div = document.createElement("div");
                     div.setAttribute("class", "fatext2 header");
                     div.style.color = 'white';
@@ -70,16 +71,19 @@ function product_list(){
 
                     mother3_div.appendChild(div);
                 }
-                for(var u = 0; u < data2.productList.length; u = u + 1){
-
+                alert(data.productList.length)
+                for(var u = 0; u < data.productList.length; u = u + 1){
                     //===== for each product, we have a div_content ===================>
-                    var div = document.createElement("div");
-                    div.setAttribute('class', 'content');
-                    div.style.cursor = 'pointer';
-                    div.data = data2.productList[u];
-                    mother3_div.appendChild(div);
+                    var div_1 = document.createElement("div");
+                    div_1.setAttribute('class', 'content');
+                    div_1.style.cursor = 'pointer';
+                    alert(data.productList[u].name)
+                    div_1.data = data.productList[u];
+                    mother3_div.appendChild(div_1);
+                    alert(mother3_div.lastElementChild.className)
+                    article.appendChild(mother3_div)
                     //====== go to the page of product specification ==================>
-                    div.onclick = function(){
+                    div_1.onclick = function(){
                         //=========== removing all children of article ================>
                         while(article.hasChildNodes()){
                             article.removeChild(article.firstChild);
@@ -92,6 +96,8 @@ function product_list(){
                         var mother3_div = document.createElement("div");
                         mother3_div.setAttribute("id", "inContentArticle");
                         article.appendChild(mother3_div);
+
+
                         //=========== add main_div and its contents ===================>
                         var main_div = document.createElement("div");
                         main_div.setAttribute("class", "main_div");
@@ -153,10 +159,59 @@ function product_list(){
                         mother3_div.appendChild(main_div);
                         //============ end of adding content of main_div ==============>
                     }
+
+                    //===== for each product, we have an image ========================>
+								var img = document.createElement("img");
+								img.src = "demo_2/img/22.jpg";
+								img.setAttribute("class", "m_img");
+								div.appendChild(img);
+
+								//===== for each product, we have name, parice, category ==========>
+								var p1 = document.createElement("p");
+								var p2 = document.createElement("p");
+								var p3 = document.createElement("p");
+
+								p1.setAttribute("class", "fatext2");
+								p2.setAttribute("class", "fatext2");
+								p3.setAttribute("class", "fatext2");
+
+								p1.innerHTML = data2.productList[u].name;
+								p2.innerHTML = "دسته: " + data2.productList[u].category;
+								p3.innerHTML = "قیمت: " + data2.productList[u].price + " تومان";
+
+								div.appendChild(p1);
+								div.appendChild(p2);
+								div.appendChild(p3);
+
+								//===== for each product, we have a button to buy =================>
+								var button = document.createElement("button");
+								button.setAttribute("class", "fatext btn btn-primary btn-wide");
+								button.innerHTML = "اضافه به سبد خرید";
+
+								button.onclick = function() {
+									buy(data2.productList[u].name, data2.productList[u].price, data2.productList[u].category);
+								}
+								div.appendChild(button);
+
+							}
+
+							//========== add pagination ===========================================>
+							$(function(data2) {
+								var pagin = document.createElement("div");
+								pagin.setAttribute("class", "pagin");
+								article.appendChild(pagin);
+								$(pagin).pagination({
+									items: data2.totalResults,
+									itemsOnPage: data2.pagesSize,
+									cssStyle: 'light-theme'
+								});
+							});
+							//======================================================================>
+
                 }
             }
-        }
-    });
+        });
+    }
 
 }
 
