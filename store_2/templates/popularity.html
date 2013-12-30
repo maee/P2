@@ -1,13 +1,18 @@
 <div id = "inContentArticle">
-    <div class = "header">
-        <p class = "fatext_head">محصولات پرطرفدار</p>
-    </div>
-    {% for p in popular %}
-        <div class = "content"><img  class = "m_img" src = "../static/image/15.jpg" />
-            <p class = "fatext2">{{ p.name }}</p><p class = "fatext2">قیمت: {{p.p}} تومان</p><p class = "fatext2">دسته: {{p.subcategory}}</p>
-            <button class="buyButton fatext btn btn-primary btn-wide">اضافه به سبد خرید</button>
+    <div class = "div_content">
+        <div class = "header">
+            <p class = "fatext_head">محصولات پرطرفدار</p>
         </div>
-    {% endfor %}
+        {% for p in popular %}
+            <div class = "content">
+                <div class = "product_content"><img  class = "m_img" src = "../static/image/{{ p.picture }}" />
+                    <p class = "fatext2">{{ p.name }}</p><p class = "fatext2">قیمت: {{p.p}} تومان</p><p class = "fatext2">دسته: {{p.subcategory}}</p>
+                    <p hidden="hidden" class="fatext2">{{ p.desc }}</p>
+                </div>
+                <button class="buyButton fatext btn btn-primary btn-wide">اضافه به سبد خرید</button>
+            </div>
+        {% endfor %}
+    </div>
 					
     <div class = "div_content">
 
@@ -16,10 +21,13 @@
         </div>
 
         {% for s in sup %}
-            <div class = "content"><img  class = "m_img" src = "../static/image/15.jpg" />
-            <p class = "fatext2">{{ s.name }}</p><p class = "fatext2">قیمت: {{s.p}} تومان</p><p class = "fatext2">دسته: {{s.subcategory}}</p>
-            <button class="buyButton fatext btn btn-primary btn-wide">اضافه به سبد خرید</button>
-        </div>
+            <div class = "content">
+                <div class = "product_content"><img  class = "m_img" src = "../static/image/{{ s.picture }}" />
+                    <p class = "fatext2">{{ s.name }}</p><p class = "fatext2">قیمت: {{s.p}} تومان</p><p class = "fatext2">دسته: {{s.subcategory}}</p>
+                    <p hidden="hidden" class="fatext2">{{ s.desc }}</p>
+                </div>
+                <button class="buyButton fatext btn btn-primary btn-wide">اضافه به سبد خرید</button>
+            </div>
         {% endfor %}
     </div>
 

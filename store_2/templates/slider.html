@@ -2,13 +2,12 @@
     <div id="examples_outer">
         <div id="slider_container_2">
 
-            <div id="SliderName_2" class="SliderName_2">
-                {% for pic in s_pic %}
-                    <a href = "#"><img src={{ pic }} width="750" height="450" alt="Demo2 first" title="Demo2 first" usemap="#img1map" /></a>
-                    <div class="SliderName_2Description">Featured model: <strong>Charlize Theron</strong></div>
+            <div id="SliderName_2" class="SliderName_2" >
+                {% for slide in slider_product %}
+                    <img class="obj_img" src="../static/image/{{ slide.picture }}" width="750" height="450" usemap="#img1map" />
+                    <div onclick="show_product('{{ slide.name }}', '{{ slide.p }}', '{{ slide.subcategory }}', '{{ slide.desc }}',
+                            '../static/image/{{ slide.picture }}')" id="SliderName_2Description">Featured model: <strong>Charlize Theron</strong></div>
                 {% endfor %}
-
-
             </div>
             <div class="c"></div>
             <div id="SliderNameNavigation_2"></div>

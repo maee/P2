@@ -34,7 +34,7 @@
 	text-decoration: none;
 }
 
-.SliderName_2Description {
+#SliderName_2Description {
 	padding: 10px;
 	font-family: Tahoma,Arial,Helvetica;
 	font-size: 14px;
@@ -42,6 +42,7 @@
 	letter-spacing: 1px;
 	text-align: center;
 	color: #ffffff;
+    cursor: pointer;
 	text-shadow: 0 1px 3px #000000;
 }
 
